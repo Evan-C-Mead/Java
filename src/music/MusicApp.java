@@ -40,6 +40,34 @@ public class MusicApp {
                     for (Music music : musicList) {
                         System.out.println(music.getArtistName() + " - " + music.getGenre() + " - " + music.getAlbum() + " - " + music.getSong());
                     }
+                    System.out.println();
+                    break;
+                case (2):
+                    for (Music music : musicList) {
+                        System.out.println(music.getArtistName());
+                    }
+                    System.out.println();
+                    break;
+                case (3):
+                    for (Music music : musicList) {
+                        System.out.println(music.getGenre());
+                    }
+                    System.out.println();
+                    break;
+                case (4):
+                    for (Music music : musicList) {
+                        System.out.println(music.getAlbum() + " - by " + music.getArtistName());
+                    }
+                    System.out.println();
+                    break;
+                case (5):
+                    for (Music music : musicList) {
+                        System.out.println(music.getSong() + " - by " + music.getArtistName());
+                    }
+                    System.out.println();
+                    break;
+                default:
+                    break;
             }
         }
     }

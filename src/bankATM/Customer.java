@@ -30,7 +30,7 @@ public class Customer {
 
         this.accounts = new ArrayList<Account>();
 
-        System.out.printf("New customer %s, %s with ID %s created.\n", firstName, lastName, this.uuID);
+        System.out.printf("New customer %s %s with ID %s created.\n", firstName, lastName, this.uuID);
     }
 
     public void addAccount(Account account) {
@@ -39,6 +39,18 @@ public class Customer {
 
     public String getUUID() {
         return this.uuID;
+    }
+
+    public boolean validatePin(String pin) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            return MessageDigest.isEqual(md.digest(pin.getBytes()), this.pinHash);
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("error, caught NoSuchAlgorithmException");
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return false;
     }
 
 }

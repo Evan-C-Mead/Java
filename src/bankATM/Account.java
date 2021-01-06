@@ -14,8 +14,6 @@ public class Account {
         this.holder = holder;
         this.uuID = theBank.getNewAccountUUID();
         this.transactions = new ArrayList<Transaction>();
-        holder.addAccount(this); // <-- adds to holder list
-        theBank.addAccount(this); // <-- adds to bank list
     }
 
     public String getUUID() {

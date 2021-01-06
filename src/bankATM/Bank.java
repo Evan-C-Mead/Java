@@ -1,5 +1,7 @@
 package bankATM;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,6 +10,13 @@ public class Bank {
     private String name;
     private ArrayList<Customer> customers;
     private ArrayList<Account> accounts;
+    private byte[] pinHash;
+
+    public Bank(String name) {
+        this.name = name;
+        this.customers = new ArrayList<Customer>();
+        this.accounts = new ArrayList<Account>();
+    }
 
     public String getNewCustomerUUID() {
         String uuID;
@@ -55,6 +64,26 @@ public class Bank {
 
     public void addAccount(Account account) {
         this.accounts.add(account);
+    }
+
+    public Customer addCustomer(String firstName, String lastName, String pin) {
+        Customer newCustomer = new Customer(firstName, lastName, pin, this);
+        this.customers.add(newCustomer);
+
+        Account newAccount = new Account("Savings", newCustomer, this); // <-- creates Customer Savings account
+        newCustomer.addAccount(newAccount);
+        this.addAccount(newAccount);
+
+        return newCustomer;
+    }
+
+    public Customer customerLogin(String customerID, String pin) {
+        for (Customer customer : this.customers) {
+            if (customer.getUUID().compareTo(customerID) == 0 && customer.validatePin(pin)) {
+                return customer;
+            }
+        }
+        return null;
     }
 
 }

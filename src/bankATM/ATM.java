@@ -1,2 +1,9 @@
-package bankATM;public class ATM {
+package bankATM;
+
+public class ATM {
+
+    public static void main(String[] args) {
+
+    }
+
 }

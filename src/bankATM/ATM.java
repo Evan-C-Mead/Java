@@ -79,4 +79,17 @@ public class ATM {
         }
     }
 
+    public static void showTransactionHistory(Customer customer, Scanner sc) {
+        int theAccount;
+
+        do {
+            System.out.printf("Enter the number (1 - %d) of the account you want to see transactions for:  ", customer.numberAccounts());
+            theAccount = sc.nextInt() - 1;
+            if (theAccount < 0 || theAccount >= customer.numberAccounts()) {
+                System.out.println("Invalid account. Please try again.");
+            }
+        } while (theAccount < 0 || theAccount >= customer.numberAccounts());
+        customer.printAccountTransactionHistory(theAccount);
+    }
+
 }

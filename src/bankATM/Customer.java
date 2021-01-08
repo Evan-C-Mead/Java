@@ -60,9 +60,17 @@ public class Customer {
     public void printAccountsSummary() {
         System.out.printf("\n%s's accounts summary", this.firstName);
         for (int i = 0; i < this.accounts.size(); i++) {
-            System.out.printf("%d) %s\n", this.accounts.get(i).getSummaryLine());
+            System.out.printf("%d) %s\n", i + 1, this.accounts.get(i).getSummaryLine());
         }
         System.out.println();
+    }
+
+    public int numberAccounts() {
+        return this.accounts.size();
+    }
+
+    public void printAccountTransactionHistory(int accountIndex) {
+        this.accounts.get(accountIndex).printTransactionHistory();
     }
 
 }

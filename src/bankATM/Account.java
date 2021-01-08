@@ -39,4 +39,12 @@ public class Account {
         return balance;
     }
 
+    public void printTransactionHistory() {
+        System.out.printf("\nTransaction history for account %s\n", this.uuID);
+        for (int t = this.transactions.size() - 1; t >= 0; t--) {
+            System.out.printf(this.transactions.get(t).getSummaryLine());
+        }
+        System.out.println();
+    }
+
 }

@@ -53,4 +53,16 @@ public class Customer {
         return false;
     }
 
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void printAccountsSummary() {
+        System.out.printf("\n%s's accounts summary", this.firstName);
+        for (int i = 0; i < this.accounts.size(); i++) {
+            System.out.printf("%d) %s\n", this.accounts.get(i).getSummaryLine());
+        }
+        System.out.println();
+    }
+
 }

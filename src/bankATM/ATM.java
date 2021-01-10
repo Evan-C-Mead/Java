@@ -43,11 +43,11 @@ public class ATM {
     }
 
     public static void printCustomerMenu(Customer customer, Scanner sc) {
-        customer.printAccountsSummary();
         int option;
 
         do {
-            System.out.printf("Welcome %s! What would you like to to do?", customer.getFirstName());
+            System.out.printf("Welcome %s! What would you like to to do?\n", customer.getFirstName());
+            customer.printAccountsSummary();
             System.out.println("1 - View account history");
             System.out.println("2 - Withdraw");
             System.out.println("3 - Deposit");
@@ -83,7 +83,7 @@ public class ATM {
         int theAccount;
 
         do {
-            System.out.printf("Enter the number (1 - %d) of the account you want to see transactions for:  ", customer.numberAccounts());
+            System.out.printf("Enter the number (1 - %d) of the account you want to see transactions for: \n", customer.numberAccounts());
             theAccount = sc.nextInt() - 1;
             if (theAccount < 0 || theAccount >= customer.numberAccounts()) {
                 System.out.println("Invalid account. Please try again.");

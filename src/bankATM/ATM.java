@@ -11,10 +11,14 @@ public class ATM {
         Bank theBank = new Bank("Bank of (not) America");
 
         Customer newCustomer1 = theBank.addCustomer("Craig", "Baldwin", "1234");
+        Account newAccount1 = new Account("Checking", newCustomer1, theBank);
+        newCustomer1.addAccount(newAccount1);
+        theBank.addAccount(newAccount1);
 
-        Account newAccount = new Account("Checking", newCustomer1, theBank);
-        newCustomer1.addAccount(newAccount);
-        theBank.addAccount(newAccount);
+        Customer newCustomer2 = theBank.addCustomer("Jules", "Franklin", "1234");
+        Account newAccount2 = new Account("Checking", newCustomer2, theBank);
+        newCustomer2.addAccount(newAccount2);
+        theBank.addAccount(newAccount2);
 
         Customer currentCustomer;
         while (true) {
@@ -29,7 +33,7 @@ public class ATM {
         Customer authorizedCustomer;
 
         do {
-            System.out.printf("\nWelcome to %s\n", theBank.getName());
+            System.out.printf("\nWelcome to %s\n\n", theBank.getName());
             System.out.println("Enter your customer ID: ");
             customerID = sc.nextLine();
             System.out.println("Enter pin: ");
@@ -46,7 +50,7 @@ public class ATM {
         int option;
 
         do {
-            System.out.printf("Welcome %s! What would you like to to do?\n", customer.getFirstName());
+            System.out.printf("\nWelcome %s! What would you like to to do?\n", customer.getFirstName());
             customer.printAccountsSummary();
             System.out.println("1 - View account history");
             System.out.println("2 - Withdraw");
@@ -73,6 +77,9 @@ public class ATM {
             case 4:
                 ATM.transferFunds(customer, sc);
                 break;
+            case 5:
+                sc.nextLine();
+                break;
         }
         if (option != 5) {
             ATM.printCustomerMenu(customer, sc);
@@ -83,7 +90,7 @@ public class ATM {
         int theAccount;
 
         do {
-            System.out.printf("Enter the number (1 - %d) of the account you want to see transactions for: \n", customer.numberAccounts());
+            System.out.printf("Enter the number (1 - %d) of the account you want to see transactions for:\n", customer.numberAccounts());
             theAccount = sc.nextInt() - 1;
             if (theAccount < 0 || theAccount >= customer.numberAccounts()) {
                 System.out.println("Invalid account. Please try again.");
@@ -99,7 +106,7 @@ public class ATM {
         String memo;
 
         do {
-            System.out.printf("Enter the number (1 - %d) of the account you want to withdraw funds from: ");
+            System.out.printf("Enter the number (1 - %d) of the account you want to withdraw funds from:\n", customer.numberAccounts());
             fromAccount = sc.nextInt() - 1;
             if (fromAccount < 0 || fromAccount >= customer.numberAccounts()) {
                 System.out.println("Invalid account. Please try again.");
@@ -108,7 +115,7 @@ public class ATM {
         accountBalance = customer.getAccountBalance(fromAccount);
 
         do {
-            System.out.printf("Enter the amount to withdraw (max $.02f): $", accountBalance);
+            System.out.print("Enter the amount to withdraw:\n$");
             amount = sc.nextDouble();
             if (amount < 0) {
                 System.out.println("Amount must be greater than $0.00");
@@ -129,7 +136,7 @@ public class ATM {
         String memo;
 
         do {
-            System.out.printf("Enter the number (1 - %d) of the account you want to deposit funds into: ");
+            System.out.printf("Enter the number (1 - %d) of the account you want to deposit funds into:\n", customer.numberAccounts());
             toAccount = sc.nextInt() - 1;
             if (toAccount < 0 || toAccount >= customer.numberAccounts()) {
                 System.out.println("Invalid account. Please try again.");
@@ -138,14 +145,12 @@ public class ATM {
         accountBalance = customer.getAccountBalance(toAccount);
 
         do {
-            System.out.printf("Enter the amount to deposit (max $.02f): $", accountBalance);
+            System.out.print("Enter the amount to deposit:\n$");
             amount = sc.nextDouble();
             if (amount < 0) {
                 System.out.println("Amount must be greater than $0.00");
-            } else if (amount > accountBalance) {
-                System.out.printf("Amount cannot be greater than balance of $%.02f\n", accountBalance);
             }
-        } while (amount < 0 || amount > accountBalance);
+        } while (amount < 0);
         sc.nextLine();
         System.out.println("Enter a memo: ");
         memo = sc.nextLine();
@@ -159,7 +164,7 @@ public class ATM {
         double accountBalance;
 
         do {
-            System.out.printf("Enter the number (1 - %d) of the account you want to transfer funds from: ");
+            System.out.printf("Enter the number (1 - %d) of the account you want to transfer funds from:\n", customer.numberAccounts());
             fromAccount = sc.nextInt() - 1;
             if (fromAccount < 0 || fromAccount >= customer.numberAccounts()) {
                 System.out.println("Invalid account. Please try again.");
@@ -168,7 +173,7 @@ public class ATM {
         accountBalance = customer.getAccountBalance(fromAccount);
 
         do {
-            System.out.printf("Enter the number (1 - %d) of the account you want to transfer funds to: ");
+            System.out.printf("Enter the number (1 - %d) of the account you want to transfer funds to:\n", customer.numberAccounts());
             toAccount = sc.nextInt() - 1;
             if (toAccount < 0 || toAccount >= customer.numberAccounts()) {
                 System.out.println("Invalid account. Please try again.");
@@ -176,7 +181,7 @@ public class ATM {
         } while (toAccount < 0 || toAccount >= customer.numberAccounts());
 
         do {
-            System.out.printf("Enter the amount to transfer (max $.02f): $", accountBalance);
+            System.out.print("Enter the amount to transfer:\n$");
             amount = sc.nextDouble();
             if (amount < 0) {
                 System.out.println("Amount must be greater than $0.00");

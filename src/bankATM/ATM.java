@@ -92,4 +92,100 @@ public class ATM {
         customer.printAccountTransactionHistory(theAccount);
     }
 
+    public static void withdrawFunds(Customer customer, Scanner sc) {
+        int fromAccount;
+        double amount;
+        double accountBalance;
+        String memo;
+
+        do {
+            System.out.printf("Enter the number (1 - %d) of the account you want to withdraw funds from: ");
+            fromAccount = sc.nextInt() - 1;
+            if (fromAccount < 0 || fromAccount >= customer.numberAccounts()) {
+                System.out.println("Invalid account. Please try again.");
+            }
+        } while (fromAccount < 0 || fromAccount >= customer.numberAccounts());
+        accountBalance = customer.getAccountBalance(fromAccount);
+
+        do {
+            System.out.printf("Enter the amount to withdraw (max $.02f): $", accountBalance);
+            amount = sc.nextDouble();
+            if (amount < 0) {
+                System.out.println("Amount must be greater than $0.00");
+            } else if (amount > accountBalance) {
+                System.out.printf("Amount cannot be greater than balance of $%.02f\n", accountBalance);
+            }
+        } while (amount < 0 || amount > accountBalance);
+        sc.nextLine();
+        System.out.println("Enter a memo: ");
+        memo = sc.nextLine();
+        customer.addAccountTransaction(fromAccount, -1 * amount, memo);
+    }
+
+    public static void depositFunds(Customer customer, Scanner sc) {
+        int toAccount;
+        double amount;
+        double accountBalance;
+        String memo;
+
+        do {
+            System.out.printf("Enter the number (1 - %d) of the account you want to deposit funds into: ");
+            toAccount = sc.nextInt() - 1;
+            if (toAccount < 0 || toAccount >= customer.numberAccounts()) {
+                System.out.println("Invalid account. Please try again.");
+            }
+        } while (toAccount < 0 || toAccount >= customer.numberAccounts());
+        accountBalance = customer.getAccountBalance(toAccount);
+
+        do {
+            System.out.printf("Enter the amount to deposit (max $.02f): $", accountBalance);
+            amount = sc.nextDouble();
+            if (amount < 0) {
+                System.out.println("Amount must be greater than $0.00");
+            } else if (amount > accountBalance) {
+                System.out.printf("Amount cannot be greater than balance of $%.02f\n", accountBalance);
+            }
+        } while (amount < 0 || amount > accountBalance);
+        sc.nextLine();
+        System.out.println("Enter a memo: ");
+        memo = sc.nextLine();
+        customer.addAccountTransaction(toAccount, amount, memo);
+    }
+
+    public static void transferFunds(Customer customer, Scanner sc) {
+        int fromAccount;
+        int toAccount;
+        double amount;
+        double accountBalance;
+
+        do {
+            System.out.printf("Enter the number (1 - %d) of the account you want to transfer funds from: ");
+            fromAccount = sc.nextInt() - 1;
+            if (fromAccount < 0 || fromAccount >= customer.numberAccounts()) {
+                System.out.println("Invalid account. Please try again.");
+            }
+        } while (fromAccount < 0 || fromAccount >= customer.numberAccounts());
+        accountBalance = customer.getAccountBalance(fromAccount);
+
+        do {
+            System.out.printf("Enter the number (1 - %d) of the account you want to transfer funds to: ");
+            toAccount = sc.nextInt() - 1;
+            if (toAccount < 0 || toAccount >= customer.numberAccounts()) {
+                System.out.println("Invalid account. Please try again.");
+            }
+        } while (toAccount < 0 || toAccount >= customer.numberAccounts());
+
+        do {
+            System.out.printf("Enter the amount to transfer (max $.02f): $", accountBalance);
+            amount = sc.nextDouble();
+            if (amount < 0) {
+                System.out.println("Amount must be greater than $0.00");
+            } else if (amount > accountBalance) {
+                System.out.printf("Amount cannot be greater than balance of $%.02f\n", accountBalance);
+            }
+        } while (amount < 0 || amount > accountBalance);
+        customer.addAccountTransaction(fromAccount, -1 * amount, String.format("Transfer to account %s", customer.getAccountUUID(toAccount)));
+        customer.addAccountTransaction(toAccount, amount, String.format("Transfer to account %s", customer.getAccountUUID(fromAccount)));
+    }
+
 }

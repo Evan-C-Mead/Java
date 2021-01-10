@@ -73,4 +73,16 @@ public class Customer {
         this.accounts.get(accountIndex).printTransactionHistory();
     }
 
+    public double getAccountBalance(int accountIndex) {
+        return this.accounts.get(accountIndex).getBalance();
+    }
+
+    public String getAccountUUID(int accountIndex) {
+        return this.accounts.get(accountIndex).getUUID();
+    }
+
+    public void addAccountTransaction(int accountIndex, double amount, String memo) {
+        this.accounts.get(accountIndex).addTransaction(amount, memo);
+    }
+
 }

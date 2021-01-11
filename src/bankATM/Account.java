@@ -24,9 +24,9 @@ public class Account {
         double balance = this.getBalance();
 
         if (balance >= 0) {
-            return String.format("%s | $%.02f | %s", this.uuID, balance, this.accountType);
+            return String.format("$%.02f | %s | Account #%s", balance, this.accountType, this.uuID);
         } else {
-            return String.format("%s | $(%.02f) | %s", this.uuID, balance, this.accountType);
+            return String.format("$(%.02f) | %s | Account #%s", balance, this.accountType, this.uuID);
         }
     }
 

@@ -35,23 +35,44 @@ public class AdventureGame {
         System.out.println("D: Take a nap.");
         String scenarioInput = sc.nextLine();
 
-        int minDrinks = 1;
-        int maxDrinks = 20;
-
         if (scenarioInput.equalsIgnoreCase("a")) {
-            System.out.println("You leave your house and start walking towards the trail that leads to the stream.");
+            stream();
         } else if (scenarioInput.equalsIgnoreCase("b")) {
-            System.out.println("You decide to head to the tavern to get a few pints with your mates.");
-            System.out.printf("%s! Everyone shouts as you enter the tavern door.", playerName);
-            System.out.printf("You order %d pints and spark up a conversation about how awful the bard sounds today.", rand.nextInt(maxDrinks) + minDrinks);
+            tavern();
         } else if (scenarioInput.equalsIgnoreCase("c")) {
-            System.out.println("A book is what you want, a book is what you'll get! Off to the library...");
+            library();
         } else if (scenarioInput.equalsIgnoreCase("d")) {
-            System.out.println("You get comfy on your bed and decide to take a nap.");
-            System.out.println("zzz...zzz...zzz");
+            nap();
         } else {
             andAction();
         }
     }
+
+    public static void stream() {
+        System.out.println("You leave your house and start walking towards the trail that leads to the stream.");
+
+    }
+
+    public static void tavern() {
+        int minDrinks = 1;
+        int maxDrinks = 20;
+
+        System.out.println("You decide to head to the tavern to get a few pints with your mates.");
+        System.out.printf("%s! Everyone shouts as you enter the tavern door.", playerName);
+        System.out.printf("You order %d pints and spark up a conversation about how awful the bard sounds today.", rand.nextInt(maxDrinks) + minDrinks);
+
+    }
+
+    public static void library() {
+        System.out.println("A book is what you want, a book is what you'll get! Off to the library...");
+
+    }
+
+    public static void nap() {
+        System.out.println("You get comfy on your bed and decide to take a nap.");
+        System.out.println("zzz...zzz...zzz");
+
+    }
+
 
 }

@@ -18,7 +18,7 @@ public class AdventureGame {
     public static void adventureTime() {
         String option = sc.nextLine();
         if (option.trim().equalsIgnoreCase("y") || option.trim().equalsIgnoreCase("yes")) {
-            System.out.println("Please enter your name: ");
+            System.out.println("\nPlease enter your name: ");
             playerName = sc.nextLine();
             System.out.printf("\n%s, welcome to the start of your adventure!\n", playerName);
             andAction();
@@ -32,7 +32,7 @@ public class AdventureGame {
         System.out.println("A: Walk to the stream.");
         System.out.println("B: Go to the tavern.");
         System.out.println("C: Take a trip to the library.");
-        System.out.println("D: Take a nap.");
+        System.out.println("D: Take a nap.\n");
         String scenarioInput = sc.nextLine();
 
         if (scenarioInput.equalsIgnoreCase("a")) {
@@ -49,7 +49,15 @@ public class AdventureGame {
     }
 
     public static void stream() {
+        int minBerries = 5;
+        int maxBerries = 12;
+
+        int minFish = 0;
+        int maxFish = 4;
+
         System.out.println("You leave your house and start walking towards the trail that leads to the stream.");
+        System.out.println("Heading down the trail you spot a berry bush and decide to pick a few to save for later.");
+        System.out.printf("You pick %d berries and place them in your bag for later.", rand.nextInt(maxBerries) + minBerries);
 
     }
 

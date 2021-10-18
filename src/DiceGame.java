@@ -42,7 +42,7 @@ public class DiceGame {
         } else if (p1Roll > p2Roll) {
             p1Score += 5;
         } else {
-            p2Score +=5;
+            p2Score += 5;
         }
         if (p1Score >= maxScore || p2Score >= maxScore) {
             return;

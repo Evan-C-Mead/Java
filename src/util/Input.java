@@ -50,10 +50,10 @@ public class Input {
 
     public int getInt(int min, int max, String prompt) {
         int input;
-        do{
+        do {
             System.out.println(prompt);
             input = this.scanner.nextInt();
-        }while(input < min || input > max);
+        } while(input < min || input > max);
         return input;
     }
 
@@ -68,10 +68,10 @@ public class Input {
 
     public double getDouble(double min, double max, String prompt){
         double input;
-        do{
+        do {
             System.out.println(prompt);
             input = this.scanner.nextDouble();
-        }while(input < min || input > max);
+        } while(input < min || input > max);
         return input;
     }
 

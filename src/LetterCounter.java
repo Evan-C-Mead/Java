@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class LetterCounter {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         sc.useDelimiter("\n");
@@ -12,14 +12,12 @@ public class LetterCounter {
             int vowels = 0, consonants = 0;
             input = input.toLowerCase();
 
-            for (int i = 0; i < input.length(); ++i)
-            {
+            for (int i = 0; i < input.length(); ++i) {
                 char letter = input.charAt(i);
                 if (letter == 'a' || letter == 'e' || letter == 'i'
                         || letter == 'o' || letter == 'u') {
                     ++vowels;
-                }
-                else if ((letter >= 'a'&& letter <= 'z')) {
+                } else if ((letter >= 'a' && letter <= 'z')) {
                     ++consonants;
                 }
             }
@@ -31,7 +29,6 @@ public class LetterCounter {
                 System.out.println("Program terminated");
                 break;
             }
-        }while (true);
-
+        } while (true);
     }
 }

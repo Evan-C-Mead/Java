@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class HighLowGame {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         guess();
     }
 
@@ -26,7 +26,7 @@ public class HighLowGame {
                 } else if (userGuess > randomNumber) {
                     System.out.println("LOWER");
                     guessCount++;
-                } else if (userGuess == randomNumber) {
+                } else {
                     System.out.println("GOOD GUESS!");
                     System.out.printf("It took you %d guesses.", guessCount);
                     break;

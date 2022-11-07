@@ -14,7 +14,7 @@ public class DiceGame {
 
         System.out.println("The game is over.");
 
-        if(game.p1Score >= game.p2Score)
+        if (game.p1Score >= game.p2Score)
             System.out.println("The winner is P1");
         else
             System.out.println("The winner is P2");
@@ -30,8 +30,8 @@ public class DiceGame {
     void rounds(int maxScore) {
         System.out.printf("Round number: %d.\n", rounds);
 
-        int p1Roll = (int)((Math.random() * 6) + 1);
-        int p2Roll = (int)((Math.random() * 6) + 1);
+        int p1Roll = (int) ((Math.random() * 6) + 1);
+        int p2Roll = (int) ((Math.random() * 6) + 1);
 
         System.out.printf("P1 rolled a: %d.\n" +
                 "P2 rolled a: %d.\n", p1Roll, p2Roll);
@@ -50,6 +50,5 @@ public class DiceGame {
         rounds++;
         rounds(maxScore);
     }
-
 //    Converting an older C# project into Java
 }

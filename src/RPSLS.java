@@ -9,7 +9,6 @@ public class RPSLS {
         game();
     }
 
-
     public static void gameRules() {
 
         System.out.println("ROCK - PAPER - SCISSORS - LIZARD - SPOCK\n");

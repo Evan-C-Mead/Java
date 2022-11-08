@@ -7,7 +7,7 @@ public class LetterCounter {
         sc.useDelimiter("\n");
 
         do {
-            System.out.println("Type something and I'll count the consonants and vowels!");
+            System.out.println("\nType something and I'll count the consonants and vowels!\n");
             String input = sc.nextLine();
             int vowels = 0, consonants = 0;
             input = input.toLowerCase();
@@ -25,8 +25,11 @@ public class LetterCounter {
             System.out.println("Number of vowels: " + vowels);
             System.out.println("Try again? [y/n]");
             String typeAgain = sc.nextLine();
-            if (typeAgain.equals("n")) {
+            if (typeAgain.equalsIgnoreCase("n")) {
                 System.out.println("Program terminated");
+                break;
+            } else if (!typeAgain.equalsIgnoreCase("y")) {
+                System.out.println("Try again? [y/n]");
                 break;
             }
         } while (true);

@@ -55,7 +55,7 @@ public class AdventureGame {
 
         int minFish = 0;
         int maxFish = 4;
-        int yourFish = rand.nextInt(maxFish) + minFish;
+        int fishCount = rand.nextInt(maxFish) + minFish;
 
         System.out.println("You leave your house and start walking towards the trail that leads to the stream.");
         System.out.println("Heading down the trail you spot a berry bush and decide to pick a few to save for later.");

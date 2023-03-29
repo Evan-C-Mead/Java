@@ -3,7 +3,6 @@ package util;
 import java.util.Scanner;
 
 public class Input {
-
     private Scanner scanner;
 
     public Input(){
@@ -74,5 +73,4 @@ public class Input {
         } while(input < min || input > max);
         return input;
     }
-
 }
